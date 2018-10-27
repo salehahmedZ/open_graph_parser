@@ -1,5 +1,6 @@
 name: open_graph_parser
 author: "Patrick Voß"
+homepage: 
 description: An open graph parser for Dart.
 version: 0.0.1
 dependencies:

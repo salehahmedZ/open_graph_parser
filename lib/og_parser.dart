@@ -50,6 +50,8 @@ class OpenGraphParser {
 
       return "";
     }
+
+    return "";
   }
 
   static List<Element> _getOpenGraphData(Document document) {
