@@ -4,9 +4,8 @@ import 'package:html/dom.dart';
 import 'dart:async';
 
 class OpenGraphParser {
-
   /// Defines a map with all open-graph tags from a given website
-  /// 
+  ///
   /// @param url The URL where the OG-data should be extracted from
   /// @returns A map containing the OG-data.
   static Future<Map> getOpenGraphData(String url) async {
@@ -22,11 +21,10 @@ class OpenGraphParser {
         var ogTagTitle = element.attributes['property'].split("og:")[1];
         var ogTagValue = element.attributes['content'];
 
-        if (ogTagValue != null && ogTagValue != "") {
-          if (requiredAttributes.contains(ogTagTitle)) {
-            if (ogTagValue == null || ogTagValue.length == 0) {
-              ogTagValue = _scrapeAlternateToEmptyValue(ogTagTitle, document);
-            }
+        if ((ogTagValue != null && ogTagValue != "") ||
+            requiredAttributes.contains(ogTagTitle)) {
+          if (ogTagValue == null || ogTagValue.length == 0) {
+            ogTagValue = _scrapeAlternateToEmptyValue(ogTagTitle, document);
           }
           data[ogTagTitle] = ogTagValue;
         }
@@ -36,7 +34,8 @@ class OpenGraphParser {
     return data;
   }
 
-  static String _scrapeAlternateToEmptyValue(String tagTitle, Document document) {
+  static String _scrapeAlternateToEmptyValue(
+      String tagTitle, Document document) {
     if (tagTitle == "title") {
       return document.head.getElementsByTagName("title")[0].text;
     }
