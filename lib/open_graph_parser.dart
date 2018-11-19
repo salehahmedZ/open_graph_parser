@@ -9,8 +9,13 @@ class OpenGraphParser {
   /// @param url The URL where the OG-data should be extracted from
   /// @returns A map containing the OG-data.
   static Future<Map> getOpenGraphData(String url) async {
-    var requiredAttributes = ['title', 'image'];
     var response = await http.get(url);
+    
+    return getOpenGraphDataFromResponse(response);
+  }
+
+  static Future<Map<String, dynamic>> getOpenGraphDataFromResponse(http.Response response) async {
+    var requiredAttributes = ['title', 'image'];
     var data = {};
 
     if (response.statusCode == 200) {
@@ -35,7 +40,7 @@ class OpenGraphParser {
   }
 
   static String _scrapeAlternateToEmptyValue(
-      String tagTitle, Document document) {
+    String tagTitle, Document document) {
     if (tagTitle == "title") {
       return document.head.getElementsByTagName("title")[0].text;
     }
