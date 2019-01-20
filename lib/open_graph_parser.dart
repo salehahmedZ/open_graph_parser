@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart';
 import 'dart:async';
+import 'dart:convert';
 
 class OpenGraphParser {
   /// Defines a map with all open-graph tags from a given website
