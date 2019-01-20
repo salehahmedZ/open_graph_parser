@@ -19,7 +19,7 @@ class OpenGraphParser {
     var data = {};
 
     if (response.statusCode == 200) {
-      var document = parser.parse(response.body);
+      var document = parser.parse(utf8.decode(response.bodyBytes));
       var openGraphMetaTags = _getOpenGraphData(document);
 
       openGraphMetaTags.forEach((element) {
