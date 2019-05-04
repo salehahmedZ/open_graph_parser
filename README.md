@@ -1,3 +1,6 @@
+### This small package is not being activly maintained, as I'm currently not using it.
+
+
 # Open Graph Parser
 
 A simple library parsing the open graph data of a given URL.
