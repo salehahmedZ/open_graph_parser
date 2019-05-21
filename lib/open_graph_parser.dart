@@ -15,7 +15,7 @@ class OpenGraphParser {
     return getOpenGraphDataFromResponse(response);
   }
 
-  static Map<String, dynamic> getOpenGraphDataFromResponse(http.Response response) {
+  static Map<dynamic, dynamic> getOpenGraphDataFromResponse(http.Response response) {
     var requiredAttributes = ['title', 'image'];
     var data = {};
 
